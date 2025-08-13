@@ -1,1 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey on Asi@Connect's Capacity Development and NREN Uses Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary: #F28C28;
+            --secondary: #E88C2D;
+            --body-bg: #FCF5EC;
+            --text: #1D1D1B;
+            --secondary-dark: #9F4B14;
+            --orange: #F28C28;
+            --magenta: #E81C64;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--body-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-section img {
+            height: 60px;
+            width: auto;
+            background: white;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .project-title {
+            flex: 1;
+            text-align: center;
+            margin: 0 2rem;
+        }
+
+        .project-title h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--orange), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-title p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .project-meta {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-dark);
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--orange);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button.secondary {
+            background-color: var(--magenta);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: var(--secondary-dark);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card .icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Countries */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .country-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .country-card.awarded {
+            border-top-color: var(--primary);
+            background: linear-gradient(135deg, rgba(242, 140, 40, 0.1), rgba(232, 140, 45, 0.1));
+        }
+
+        /* Activities Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--secondary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 55%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -25px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -25px;
+        }
+
+        /* Partners */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .partner {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--secondary);
+        }
+
+        /* SDGs */
+        .sdgs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .sdg {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* Survey Platform */
+        .survey-platform {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .survey-platform h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .survey-url {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-logos img {
+            height: 50px;
+            width: auto;
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo-section {
+                justify-content: center;
+            }
+
+            .project-title {
+                margin: 1rem 0;
+            }
+
+            .project-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-item::before {
+                left: -45px !important;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .countries-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .project-title h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-section img {
+                height: 45px;
+            }
+
+            .footer-logos img {
+                height: 40px;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .stat, .country-card, .timeline-item {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="images/logos/tein-logo.png" alt="TEIN Cooperation Center">
+                    <img src="images/logos/asia-connect-logo.png" alt="Asia Connect">
+                    <img src="images/logos/eu-logo.png" alt="European Union">
+                </div>
+                <div class="project-title">
+                    <h1>NREN Capacity Survey</h1>
+                    <p>Asi@Connect Development Analysis & Future Planning</p>
+                </div>
+                <div class="project-meta">
+                    <strong>WP2 • 5th Call</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#objectives">Objectives</a>
+                <a href="#activities">Activities</a>
+                <a href="#outcomes">Outcomes</a>
+                <a href="#countries">Countries</a>
+                <a href="#partners">Partners</a>
+                <a href="#future">Future</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Strengthening Asian Research Networks</h2>
+            <p>Comprehensive assessment of NREN services and capacity development initiatives across seven Asian countries, providing strategic insights for enhanced regional connectivity and collaboration.</p>
+            <a href="#survey" class="cta-button">View Survey Platform</a>
+            <a href="#outcomes" class="cta-button secondary">See Results</a>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <section id="overview" class="section">
+                <h2>Project Overview</h2>
+                <p>This comprehensive project assessed Asi@Connect's capacity development and NREN services across seven least developed Asian countries through systematic surveys, field visits, and stakeholder consultations. The initiative aimed to identify infrastructure gaps, training needs, and strategic improvements to enhance regional research and education networking capabilities.</p>
+
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">124</span>
+                        <span class="stat-label">Institutions Surveyed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">Campus Visits</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Countries Assessed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Partner Organizations</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="survey" class="survey-platform">
+                <h3>🌐 Web-Based Survey Platform</h3>
+                <p>A dedicated survey system was developed to collect comprehensive data from NREN professionals across the region.</p>
+                <div class="survey-url">https://nrensurvey.bdren.net.bd</div>
+                <p>This reusable platform continues to facilitate ongoing feedback and assessment across participating institutions.</p>
+            </section>
+
+            <section id="objectives" class="section">
+                <h2>Project Objectives</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="icon">🎯</div>
+                        <h3>Primary Assessment</h3>
+                        <p>Evaluate NREN services and Asi@Connect capacity development initiatives across seven Asian countries through comprehensive data collection.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">📊</div>
+                        <h3>Gap Analysis</h3>
+                        <p>Identify infrastructure gaps, training needs, and service deficiencies to inform strategic improvements.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">📋</div>
+                        <h3>Strategic Recommendations</h3>
+                        <p>Develop evidence-based recommendations for future TEIN and Asi@Connect program enhancements.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="activities" class="section">
+                <h2>Activities Conducted</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Website Development</h3>
+                        <p>Created a comprehensive web-based survey system at nrensurvey.bdren.net.bd to collect data from NREN professionals across participating countries.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Baseline Survey</h3>
+                        <p>Conducted extensive online survey with responses from 124 institutions to evaluate existing NREN services and training impacts.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Focus Group Discussions</h3>
+                        <p>Organized FGDs at 15 universities in Bangladesh to gather qualitative insights on network performance and management needs.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Campus Network Visits</h3>
+                        <p>Conducted on-site assessments to observe infrastructure, security systems, and REN services in participating institutions.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Blended Conference</h3>
+                        <p>Held final stakeholder conference in Dhaka to present survey findings and discuss improvement recommendations.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Final Report</h3>
+                        <p>Compiled comprehensive final report with survey results, FGD findings, and strategic recommendations for future programs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="countries" class="section">
+                <h2>Participating Countries</h2>
+                <div class="countries-grid">
+                    <div class="country-card awarded">
+                        <h3>🇧🇩 Bangladesh</h3>
+                        <p><strong>Awarded Country</strong><br>Project lead and coordination hub</p>
+                    </div>
+                    <div class="country-card">
+                        <h3>🇦🇫 Afghanistan</h3>
+                        <p>Beneficiary country participating in capacity assessment</p>
+                    </div>
+                    <div class="country-card">
+                        <h3>🇧🇹 Bhutan</h3>
+                        <p>Regional partner in NREN development initiatives</p>
+                    </div>
+                    <div class="country-card">
+                        <h3>🇰🇭 Cambodia</h3>
+                        <p>Participating in infrastructure and training assessment</p>
+                    </div>
+                    <div class="country-card">
+                        <h3>🇱🇦 Laos</h3>
+                        <p>Key beneficiary of capacity development programs</p>
+                    </div>
+                    <div class="country-card">
+                        <h3>🇲🇲 Myanmar</h3>
+                        <p>Regional network development and assessment participant</p>
+                    </div>
+                    <div class="country-card">
+                        <h3>🇳🇵 Nepal</h3>
+                        <p>Beneficiary country in regional networking initiatives</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="outcomes" class="section">
+                <h2>Key Outcomes</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="icon">📊</div>
+                        <h3>Comprehensive Data Collection</h3>
+                        <p>Successfully surveyed 124 institutions across 7 countries, creating the most comprehensive NREN assessment in the region.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🏫</div>
+                        <h3>On-Site Evaluations</h3>
+                        <p>Conducted detailed infrastructure assessments at 15 universities, providing real-world insights into network capabilities.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🔍</div>
+                        <h3>Gap Identification</h3>
+                        <p>Identified critical gaps in technical training, hands-on experience, and learning management system adoption.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🌐</div>
+                        <h3>Reusable Platform</h3>
+                        <p>Created sustainable web-based feedback platform for ongoing assessment and improvement initiatives.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">📝</div>
+                        <h3>Policy Recommendations</h3>
+                        <p>Developed comprehensive policy recommendations for future TEIN and Asi@Connect program enhancements.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🤝</div>
+                        <h3>Stakeholder Engagement</h3>
+                        <p>Facilitated extensive stakeholder consultation through FGDs and conferences, ensuring regional buy-in.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="partners" class="section">
+                <h2>Partner Organizations</h2>
+                <div class="partners-grid">
+                    <div class="partner">
+                        <h3>Patuakhali Science and Technology University (PSTU)</h3>
+                        <p>Lead institution from Bangladesh coordinating project activities</p>
+                    </div>
+                    <div class="partner">
+                        <h3>Bangladesh Research and Education Network (BdREN)</h3>
+                        <p>National NREN providing technical expertise and infrastructure</p>
+                    </div>
+                    <div class="partner">
+                        <h3>University of Dhaka - Institute of Information Technology</h3>
+                        <p>Technical partner providing research and development support</p>
+                    </div>
+                    <div class="partner">
+                        <h3>University of Chittagong - Department of Sociology</h3>
+                        <p>Research partner focusing on social and organizational aspects</p>
+                    </div>
+                    <div class="partner">
+                        <h3>TEIN*CC</h3>
+                        <p>Regional coordination and networking support organization</p>
+                    </div>
+                    <div class="partner">
+                        <h3>Asi@Connect Secretariat</h3>
+                        <p>Program coordination and strategic guidance provider</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="future" class="section">
+                <h2>Future Directions</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="icon">📈</div>
+                        <h3>Platform Expansion</h3>
+                        <p>Maintain and expand the online feedback platform to support continuous improvement and monitoring.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🎓</div>
+                        <h3>Training Centers</h3>
+                        <p>Establish Training of Trainers (ToT) centers at universities to build sustainable local capacity.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">💻</div>
+                        <h3>Digital Infrastructure</h3>
+                        <p>Implement learning management systems and digital office infrastructure across participating institutions.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🤝</div>
+                        <h3>Industry Partnerships</h3>
+                        <p>Promote partnerships between universities and industries to enhance practical training opportunities.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🎯</div>
+                        <h3>Tailored Training</h3>
+                        <p>Develop role-specific training content tailored for different NREN positions and skill levels.</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🌏</div>
+                        <h3>Regional Integration</h3>
+                        <p>Strengthen regional collaboration and knowledge sharing mechanisms across Asian NRENs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Sustainable Development Goals</h2>
+                <div class="sdgs">
+                    <div class="sdg">SDG 4: Quality Education</div>
+                    <div class="sdg">SDG 9: Industry, Innovation and Infrastructure</div>
+                    <div class="sdg">SDG 17: Partnerships for the Goals</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logos">
+                <img src="images/logos/tein-logo.png" alt="TEIN Cooperation Center">
+                <img src="images/logos/asia-connect-logo.png" alt="Asia Connect">
+                <img src="images/logos/eu-logo.png" alt="European Union">
+            </div>
+            <p>&copy; 2024 NREN Capacity Development Survey - WP2. Enhancing regional research and education networks.</p>
+            <p>Survey Platform: <a href="https://nrensurvey.bdren.net.bd" style="color: #F28C28;">nrensurvey.bdren.net.bd</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and timeline items
+        document.querySelectorAll('.card, .stat, .country-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 30);
+        }
+
+        // Animate counters when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.textContent);
+                        animateCounter(stat, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Timeline animation
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            item.style.transitionDelay = `${index * 0.1}s`;
+            
+            if (index % 2 === 0) {
+                item.style.transform = 'translateX(-50px)';
+            } else {
+                item.style.transform = 'translateX(50px)';
+            }
+            
+            timelineObserver.observe(
